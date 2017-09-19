@@ -4,8 +4,8 @@ defmodule Metex.Worker do
         receive do
             {sender_pid, location} ->
                 send(sender_pid, {:ok, temperature_of(location)})
-            _ -> 
-                IO.puts "don't know how to process this message"
+            msg -> 
+                IO.puts "don't know how to process this message - #{msg}"
         end
         loop()
     end
